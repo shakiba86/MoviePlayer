@@ -1,0 +1,260 @@
+:root {
+  /* Color Variables */
+  --primary-color: #abc3dd;
+  --secondary-color: #50e3c2;
+  --background-color: rgba(0, 0, 0, 0.3);
+  --text-color: #f5f5f5;
+  --subtext-color: #bfbfbf;
+  --slider-bg: #3a3a3a;
+  --hover-color: #50e3c2;
+  --thumb-color: #4a6f96;
+  --loader-bar: #50e3c2;
+  --loader-highlight: #4a90e2;
+
+  /* Font Variables */
+  --font-family: "Poppins", Arial, Helvetica, sans-serif;
+  --font-size-main: 1rem;
+  --font-size-title: 2rem;
+  --font-size-subtitle: 1.3rem;
+
+  --border-radius: 20px;
+  --slider-height: 8px;
+  --thumb-size: 18px;
+  --album-size: 220px;
+  --padding-main: 20px;
+  --button-padding: 15px;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: bold;
+  background-image: url(../images/tehran.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 110vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.player {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.wrapper {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  padding: var(--padding-main);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(15px);
+  background: var(--background-color);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.track-art {
+  margin: 25px;
+  height: var(--album-size);
+  width: var(--album-size);
+  border: 3px solid var(--primary-color);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.now-playing {
+  font-size: var(--font-size-main);
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.track-name {
+  font-size: var(--font-size-title);
+  color: var(--text-color);
+  font-weight: 600;
+  text-align: center;
+}
+
+.track-artist {
+  margin-top: 5px;
+  font-size: var(--font-size-subtitle);
+  color: var(--subtext-color);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.repeat-track,
+.next-track,
+.playpause-track,
+.prev-track,
+.random-track {
+  padding: var(--button-padding);
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  transition: color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.repeat-track:hover,
+.next-track:hover,
+.playpause-track:hover,
+.prev-track:hover,
+.random-track:hover {
+  color: var(--hover-color);
+  transform: scale(1.2);
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.seek-slider,
+.volume-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: var(--slider-height);
+  background: var(--slider-bg);
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.seek-slider:hover,
+.volume-slider:hover {
+  background: var(--primary-color);
+}
+
+.seek-slider::-webkit-slider-thumb,
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  background: var(--thumb-color);
+  border: 2px solid var(--slider-bg);
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.seek-slider {
+  width: 70%;
+}
+
+.volume-slider {
+  width: 25%;
+}
+
+.current-time,
+.total-duration {
+  padding: 10px;
+  color: var(--text-color);
+  font-size: var(--font-size-main);
+}
+
+i.fa-volume-down,
+i.fa-volume-up {
+  padding: 10px;
+  color: var(--primary-color);
+}
+
+i,
+i.fa-play-circle,
+i.fa-pause-circle,
+i.fa-step-forward,
+i.fa-step-backward,
+p {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.randomActive {
+  color: var(--hover-color) !important;
+}
+
+.rotate {
+  animation: glow 2s infinite ease-in-out;
+  box-shadow: 0 0 10px var(--primary-color); /* Initial glow */
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px var(--primary-color);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--primary-color);
+  }
+}
+
+.loader {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader .stroke {
+  background: var(--loader-bar);
+  height: 100%;
+  width: 10px;
+  border-radius: 50px;
+  margin: 0 5px;
+  animation: animate 1.4s linear infinite;
+}
+
+@keyframes animate {
+  50% {
+    height: 20%;
+    background-color: var(--primary-color);
+  }
+  100% {
+    height: 100%;
+    background: var(--loader-highlight);
+  }
+}
+
+.stroke:nth-child(1) {
+  animation-delay: 0s;
+}
+.stroke:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.stroke:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.stroke:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.stroke:nth-child(5) {
+  animation-delay: 0.6s;
+}
+.stroke:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.stroke:nth-child(7) {
+  animation-delay: 0s;
+}
